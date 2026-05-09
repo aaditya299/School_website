@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Arcade Academy - Premier CBSE School in Jalandhar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #f0f4f8 100%);
+            color: #1a1a1a;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --primary-blue: #2196F3;
+            --primary-blue-dark: #1976D2;
+            --primary-blue-light: #42A5F5;
+            --secondary-blue: #1E88E5;
+            --accent-blue: #64B5F6;
+            --light-blue: #E3F2FD;
+            --bg-blue: #F1F7FF;
+            --text-dark: #1a1a1a;
+            --text-light: #666666;
+            --white: #FFFFFF;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.15);
+            --border-radius: 12px;
+        }
+
+        /* Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--white);
+            box-shadow: var(--shadow-md);
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-blue);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #E3F2FD 0%, #F1F7FF 50%, #E8F4FD 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(33, 150, 243, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -50px;
+            right: -100px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(30, 136, 229, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -50px;
+            left: -100px;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            animation: slideInUp 0.8s ease;
+        }
+
+        @keyframes slideInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            animation: slideInUp 0.8s ease 0.1s backwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideInUp 0.8s ease 0.2s backwards;
+        }
+
+        .btn {
+            padding: 0.95rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--white);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(33, 150, 243, 0.35);
+        }
+
+        .btn-primary:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-secondary:hover {
+            background: var(--light-blue);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(0);
+            animation: ripple-animation 0.6s ease-out;
+        }
+
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--text-dark);
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        #about {
+            background: linear-gradient(135deg, #F5F7FA 0%, #E8F4FD 100%);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .about-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid rgba(33, 150, 243, 0.1);
+        }
+
+        .about-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-blue);
+        }
+
+        .about-card h3 {
+            color: var(--primary-blue);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .about-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* Stats Section */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--light-blue), var(--bg-blue));
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            border: 1px solid rgba(33, 150, 243, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Courses Section */
+        #courses {
+            background: linear-gradient(135deg, #F1F7FF 0%, #E3F2FD 100%);
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .course-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid rgba(33, 150, 243, 0.08);
+        }
+
+        .course-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .course-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--white);
+            padding: 1.5rem;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .course-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-content {
+            padding: 1.5rem;
+        }
+
+        .course-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Facilities Section */
+        #facilities {
+            background: linear-gradient(135deg, #E8F4FD 0%, #F5F7FA 100%);
+        }
+
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .facility-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(33, 150, 243, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-blue);
+        }
+
+        .facility-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .facility-card h3 {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .facility-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Admissions Section */
+        #admissions {
+            background: linear-gradient(135deg, #F1F7FF 0%, #E3F2FD 100%);
+        }
+
+        .admission-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+            align-items: start;
+        }
+
+        .admission-box {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(33, 150, 243, 0.1);
+        }
+
+        .admission-box h3 {
+            color: var(--primary-blue);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--light-blue);
+            padding-bottom: 0.5rem;
+        }
+
+        .admission-box ul {
+            list-style: none;
+        }
+
+        .admission-box li {
+            padding: 0.75rem 0;
+            color: var(--text-light);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .admission-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .fee-structure {
+            background: linear-gradient(135deg, var(--light-blue), var(--bg-blue));
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 0.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .fee-structure span:first-child {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .fee-structure span:last-child {
+            color: var(--primary-blue);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* Contact/Form Section */
+        #contact {
+            background: linear-gradient(135deg, #E8F4FD 0%, #F5F7FA 100%);
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 3rem auto 0;
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(33, 150, 243, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.95rem 1rem;
+            border: 2px solid rgba(33, 150, 243, 0.2);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+            background: var(--white);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .error-message {
+            color: #d32f2f;
+            font-size: 0.85rem;
+            margin-top: 0.4rem;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+            animation: shake 0.3s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .form-group.invalid input,
+        .form-group.invalid textarea {
+            border-color: #d32f2f;
+        }
+
+        .success-message {
+            background: linear-gradient(135deg, #4caf50, #45a049);
+            color: var(--white);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+            animation: slideInDown 0.4s ease;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: var(--white);
+                padding: 1rem;
+                gap: 1rem;
+                box-shadow: var(--shadow-md);
+                animation: slideDown 0.3s ease;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .admission-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            nav {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+        }
+
+        /* Special Welcome Message */
+        .welcome-message {
+            position: fixed;
+            bottom: -100px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--white);
+            padding: 1.5rem 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 999;
+            max-width: 300px;
+        }
+
+        .welcome-message.show {
+            bottom: 20px;
+        }
+
+        .welcome-message.hide {
+            bottom: -100px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            font-size: 1.5rem;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <nav>
+            <div class="logo">🎓 LAA</div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#facilities">Facilities</a></li>
+                <li><a href="#admissions">Admissions</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Learning Arcade Academy</h1>
+            <p>Premier CBSE school in Jalandhar delivering academic excellence, holistic development, and 21st-century skills since 1995.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="scrollToSection('admissions')">Start Your Journey</button>
+                <button class="btn btn-secondary" onclick="scrollToSection('about')">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Our Academy</h2>
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>🎓 Holistic Education</h3>
+                <p>Blending academics, arts, sports & STEM for complete student development. We believe in nurturing well-rounded individuals prepared for the future.</p>
+            </div>
+            <div class="about-card">
+                <h3>🏆 Proven Results</h3>
+                <p>100% CBSE pass rate, 50+ IIT placements, and numerous national award winners. Our track record speaks to our commitment to excellence.</p>
+            </div>
+            <div class="about-card">
+                <h3>🏛️ Modern Infrastructure</h3>
+                <p>Smart classrooms, robotics labs, and Olympic-size sports complex. State-of-the-art facilities supporting cutting-edge education.</p>
+            </div>
+        </div>
+
+        <div class="stats-container" style="margin-top: 4rem;">
+            <div class="stat-card">
+                <div class="stat-number">98.5%</div>
+                <div class="stat-label">CBSE Results</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2,500+</div>
+                <div class="stat-label">Students</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">IIT Alumni</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">15</div>
+                <div class="stat-label">Sports Titles</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses">
+        <h2 class="section-title">Academic Programs</h2>
+        <div class="courses-grid">
+            <div class="course-card">
+                <div class="course-header">
+                    <h3>CBSE Curriculum</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.9;">Nursery - XII Grade</p>
+                </div>
+                <div class="course-content">
+                    <p>Science, Commerce, and Humanities streams with integrated JEE/NEET/CLAT coaching. Comprehensive curriculum designed to nurture academic excellence.</p>
+                </div>
+            </div>
+            <div class="course-card">
+                <div class="course-header">
+                    <h3>STEM & Robotics</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.9;">Innovation Lab</p>
+                </div>
+                <div class="course-content">
+                    <p>Arduino, Python coding, AI/ML basics, and project-based learning. Hands-on experience with cutting-edge technology and problem-solving.</p>
+                </div>
+            </div>
+            <div class="course-card">
+                <div class="course-header">
+                    <h3>Arts & Sports</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.9;">Excellence Academy</p>
+                </div>
+                <div class="course-content">
+                    <p>Music, dance, football academy, and state-level competitions. Develop talent and passion in performing arts and athletics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section id="facilities">
+        <h2 class="section-title">World-Class Infrastructure</h2>
+        <div class="facilities-grid">
+            <div class="facility-card">
+                <div class="facility-icon">🏛️</div>
+                <h3>Smart Classrooms</h3>
+                <p>Interactive panels, AC, 1:35 student-teacher ratio, and digital libraries for enhanced learning experiences.</p>
+            </div>
+            <div class="facility-card">
+                <div class="facility-icon">⚽</div>
+                <h3>Sports Complex</h3>
+                <p>5-acre ground, indoor hall, Olympic-size swimming pool, and fully equipped gym for athletic training.</p>
+            </div>
+            <div class="facility-card">
+                <div class="facility-icon">🔬</div>
+                <h3>Science & Tech Labs</h3>
+                <p>State-of-the-art Physics, Chemistry, Biology, and Computer labs with latest equipment and technology.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admissions Section -->
+    <section id="admissions">
+        <h2 class="section-title">Admissions 2026-27 OPEN NOW</h2>
+        <div class="admission-content">
+            <div class="admission-box">
+                <h3>📅 Key Dates & Process</h3>
+                <ul>
+                    <li>Nursery: Age 3+ (as of March 31, 2026)</li>
+                    <li>LKG-V: Interaction + Parent Interview</li>
+                    <li>VI-XII: Written Test (Maths/English) + Interview</li>
+                    <li>Last Date: June 15, 2026</li>
+                </ul>
+                <h3 style="margin-top: 2rem;">✅ Admission Steps</h3>
+                <ul>
+                    <li>Online Application (website form)</li>
+                    <li>Documents: Birth certificate, previous marksheets</li>
+                    <li>Entrance Test/Interview (30 minutes)</li>
+                    <li>Merit List (within 7 days)</li>
+                    <li>Fee Deposit & Enrollment</li>
+                </ul>
+            </div>
+
+            <div class="admission-box">
+                <h3>💰 Fee Structure</h3>
+                <div class="fee-structure">
+                    <span>Nursery-KG</span>
+                    <span>₹65,000/year</span>
+                </div>
+                <div class="fee-structure">
+                    <span>I-V Grade</span>
+                    <span>₹85,000/year</span>
+                </div>
+                <div class="fee-structure">
+                    <span>VI-X Grade</span>
+                    <span>₹1,05,000/year</span>
+                </div>
+                <div class="fee-structure">
+                    <span>XI-XII Grade</span>
+                    <span>₹1,25,000/year</span>
+                </div>
+                <p style="color: var(--text-light); margin-top: 1.5rem; font-size: 0.9rem;">✓ Installments available<br>✓ Scholarships for 25% merit students</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-container">
+            <div class="success-message" id="successMessage">
+                ✓ Thank you! We'll contact you soon.
+            </div>
+            <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    <span class="error-message">Please enter your name</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    <span class="error-message">Please enter a valid email</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Share your inquiry..." required></textarea>
+                    <span class="error-message">Please share your message</span>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Learning Arcade Academy. All rights reserved. | Jalandhar, Punjab, India</p>
+    </footer>
+
+    <!-- Welcome Message -->
+    <div class="welcome-message" id="welcomeMessage">
+        <button class="close-btn" onclick="closeWelcomeMessage()">×</button>
+        <p style="margin: 0; font-weight: 600;">🎉 Welcome!</p>
+        <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem;">Click the "Start Your Journey" button to explore our admissions process.</p>
+    </div>
+
+    <script>
+        // Ripple Effect
+        document.addEventListener('click', function(event) {
+            if (event.target.closest('.btn')) {
+                const btn = event.target.closest('.btn');
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                
+                const rect = btn.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = event.clientX - rect.left - size / 2;
+                const y = event.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                
+                btn.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            }
+        });
+
+        // Hamburger Menu
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when link is clicked
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth Scrolling
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Welcome Message
+        window.addEventListener('load', () => {
+            const welcomeMessage = document.getElementById('welcomeMessage');
+            setTimeout(() => {
+                welcomeMessage.classList.add('show');
+            }, 1000);
+        });
+
+        function closeWelcomeMessage() {
+            const welcomeMessage = document.getElementById('welcomeMessage');
+            welcomeMessage.classList.remove('show');
+            welcomeMessage.classList.add('hide');
+        }
+
+        // Form Validation
+        const form = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            handleFormSubmit(event);
+        });
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            // Clear previous errors
+            document.querySelectorAll('.form-group').forEach(group => {
+                group.classList.remove('invalid');
+                const errorMsg = group.querySelector('.error-message');
+                if (errorMsg) errorMsg.classList.remove('show');
+            });
+
+            // Validate fields
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            let isValid = true;
+
+            if (!name) {
+                showError('name', 'Please enter your name');
+                isValid = false;
+            }
+
+            if (!email || !isValidEmail(email)) {
+                showError('email', 'Please enter a valid email');
+                isValid = false;
+            }
+
+            if (!message) {
+                showError('message', 'Please share your message');
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Show success message
+                successMessage.classList.add('show');
+                form.reset();
+
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                }, 5000);
+            }
+        }
+
+        function showError(fieldId, errorText) {
+            const field = document.getElementById(fieldId);
+            const formGroup = field.closest('.form-group');
+            formGroup.classList.add('invalid');
+            const errorMsg = formGroup.querySelector('.error-message');
+            if (errorMsg) {
+                errorMsg.textContent = errorText;
+                errorMsg.classList.add('show');
+            }
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Scroll animations for stat cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'slideInUp 0.6s ease forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stat-card, .course-card, .facility-card, .about-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
